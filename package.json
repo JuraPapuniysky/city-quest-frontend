@@ -1,0 +1,73 @@
+{
+  "name": "city-quest-frontend",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node server.js",
+    "dev:start": "ng serve",
+    "dev:build": "ng build --prod",
+    "dev:test": "ng test",
+    "dev:lint": "ng lint",
+    "dev:e2e": "ng e2e",
+    "postinstall": "ngcc"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~10.2.3",
+    "@angular/common": "~10.2.3",
+    "@angular/compiler": "~10.2.3",
+    "@angular/core": "~10.2.3",
+    "@angular/forms": "~10.2.3",
+    "@angular/localize": "~10.2.3",
+    "@angular/platform-browser": "~10.2.3",
+    "@angular/platform-browser-dynamic": "~10.2.3",
+    "@angular/router": "~10.2.3",
+    "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "bootstrap": "^4.4.0",
+    "core-js": "^2.5.4",
+    "express": "^4.17.1",
+    "ionicons": "2.0.1",
+    "ngx-toastr": "^13.0.0",
+    "rxjs": "~6.6.3",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.1002.0",
+    "@angular/cli": "~10.2.0",
+    "@angular/compiler-cli": "~10.2.3",
+    "@angular/language-service": "~10.2.3",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "admin-lte": "3.0.4",
+    "codelyzer": "^6.0.0",
+    "husky": "^4.2.5",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~3.3.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "lint-staged": "^10.2.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "~3.9.7"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "node ng-lint-staged.js dev:lint",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && ng lint && lint-staged"
+    }
+  }
+}
