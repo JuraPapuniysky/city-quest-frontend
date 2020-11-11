@@ -25,6 +25,12 @@ import localeEn from '@angular/common/locales/en';
 import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
+import { CountriesComponent } from './views/geo/countries/countries.component';
+import { CitiesComponent } from './views/geo/cities/cities.component';
+import { CityCreateComponent } from './views/geo/cities/city-create/city-create.component';
+import { CityUpdateComponent } from './views/geo/cities/city-update/city-update.component';
+import { CountryUpdateComponent } from './views/geo/countries/country-update/country-update.component';
+import { CountryCreateComponent } from './views/geo/countries/country-create/country-create.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -45,6 +51,12 @@ registerLocaleData(localeEn, 'en-EN');
     AppButtonComponent,
     UserDropdownMenuComponent,
     ConfirmComponent,
+    CountriesComponent,
+    CitiesComponent,
+    CityCreateComponent,
+    CityUpdateComponent,
+    CountryUpdateComponent,
+    CountryCreateComponent,
   ],
   imports: [
     BrowserModule,
