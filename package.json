@@ -26,6 +26,7 @@
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "ionicons": "2.0.1",
+    "ngx-device-detector": "^2.0.0",
     "ngx-toastr": "^13.0.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",

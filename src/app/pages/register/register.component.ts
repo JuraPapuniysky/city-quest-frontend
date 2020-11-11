@@ -22,15 +22,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
       fullName: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
-      retypePassword: new FormControl(null, Validators.required),
+      confirmPassword: new FormControl(null, Validators.required),
     });
   }
 
-  register() {
+  async register() {
     if (this.registerForm.valid) {
-      this.appService.register();
-    } else {
-      this.toastr.error('Hello world!', 'Toastr fun!');
+      await this.appService.register(this.registerForm);
+      const response = this.appService.getRegisterResponse();
+      if (response.status === 'success') {
+        this.toastr.info(response.message);
+      } else {
+        this.toastr.error(response.message);
+      }
     }
   }
 
