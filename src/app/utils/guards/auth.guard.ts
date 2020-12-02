@@ -42,7 +42,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
           }
           resolve(this.access);
         }, error => {
-          this.auth.refreshToken().then(error => this.access = false);
+          this.auth.refreshToken().then(error => {
+            this.access = false;
+            location.reload();
+          });
           resolve(this.access);
         });
     });

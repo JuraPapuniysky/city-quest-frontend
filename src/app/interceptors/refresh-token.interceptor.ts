@@ -9,25 +9,21 @@ import {Observable, Subscriber} from 'rxjs';
 import {AppService} from '../utils/services/app.service';
 import {tap} from 'rxjs/operators';
 import {AuthGuard} from '../utils/guards/auth.guard';
+import {Router} from '@angular/router';
 
 
 @Injectable()
 export class RefreshTokenInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AppService, private authGuard: AuthGuard) {
+  constructor(private auth: AppService, private router: Router) {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(tap(event => {
-      return next.handle(request);
     }, error => {
       console.log(error);
-      if (error.status === 412) {
-        this.auth.refreshToken();
-        request = request.clone({
-          setHeaders: {Authorization: localStorage.getItem('access-token')}
-        });
-        this.authGuard.setAccess(true);
+      if (error.status === 401) {
+        this.router.navigate(['/login']);
       }
     }));
   }
