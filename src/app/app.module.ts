@@ -9,7 +9,7 @@ import { HeaderComponent } from './pages/main/header/header.component';
 import { FooterComponent } from './pages/main/footer/footer.component';
 import { MenuSidebarComponent } from './pages/main/menu-sidebar/menu-sidebar.component';
 import { BlankComponent } from './views/blank/blank.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './views/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './pages/register/register.component';
@@ -27,6 +27,14 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 import {RefreshTokenInterceptor} from './interceptors/refresh-token.interceptor';
 import {AuthHeadersInterceptor} from './interceptors/auth-headers.interceptor';
+import { CitiesComponent } from './views/geo/cities/cities.component';
+import { CountriesComponent } from './views/geo/countries/countries.component';
+import { CountryCreateComponent } from './views/geo/countries/country-create/country-create.component';
+import { CountryUpdateComponent } from './views/geo/countries/country-update/country-update.component';
+import { CountryFormComponent } from './views/geo/countries/country-form/country-form.component';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { CountriesMainComponent } from './pages/countries-main/countries-main.component';
+
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -47,6 +55,12 @@ registerLocaleData(localeEn, 'en-EN');
     AppButtonComponent,
     UserDropdownMenuComponent,
     ConfirmComponent,
+    CitiesComponent,
+    CountriesComponent,
+    CountryCreateComponent,
+    CountryUpdateComponent,
+    CountryFormComponent,
+    CountriesMainComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +74,8 @@ registerLocaleData(localeEn, 'en-EN');
     }),
     NgbModule,
     HttpClientModule,
+    CKEditorModule,
+    FormsModule,
   ],
   providers: [
      {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true},

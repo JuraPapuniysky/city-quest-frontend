@@ -9,21 +9,28 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 import {ConfirmComponent} from './pages/confirm/confirm.component';
+import {CountriesComponent} from './views/geo/countries/countries.component';
+import {CountryCreateComponent} from './views/geo/countries/country-create/country-create.component';
+import {CountriesMainComponent} from './pages/countries-main/countries-main.component';
+import {CountryUpdateComponent} from './views/geo/countries/country-update/country-update.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
     canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
     children: [
+      {path: 'profile', component: ProfileComponent},
+      {path: 'blank', component: BlankComponent},
       {
-        path: 'profile',
-        component: ProfileComponent,
-      },
-      {
-        path: 'blank',
-        component: BlankComponent,
+        path: 'countries',
+        component: CountriesMainComponent,
+        canActivate: [AuthGuard],
+        children: [
+          {path: '', component: CountriesComponent},
+          {path: 'create', component: CountryCreateComponent},
+          {path: 'update/:uuid', component: CountryUpdateComponent},
+        ],
       },
       {
         path: '',

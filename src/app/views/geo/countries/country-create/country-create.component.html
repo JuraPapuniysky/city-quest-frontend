@@ -1,0 +1,16 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Create country</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="box">
+      <app-country-form (updateCountryEvent)="createCountry(country)" [country]="country"></app-country-form>
+    </div>
+  </div>
+</section>

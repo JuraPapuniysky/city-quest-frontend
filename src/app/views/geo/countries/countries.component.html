@@ -1,0 +1,39 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Countries</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="box">
+      <div class="box-tools">
+        <a [routerLink]="['./create']" class="btn btn-success">Create country</a>
+      </div>
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th *ngFor=" let headerItem of tableHeader" scope="col">{{headerItem}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let country of countries; let i = index">
+            <td scope="col">{{country.uuid}}</td>
+            <td scope="col">{{country.name}}</td>
+            <td scope="col">{{country.isoCode}}</td>
+            <td scope="col">{{country.description}}</td>
+            <td scope="col"><a class="btn btn-primary" [routerLink]="['/cities', country.uuid]">Cities</a>
+              <a class="btn btn-warning" [routerLink]="['./update', country.uuid]">Update</a>
+              <button class="btn btn-danger" (click)="deleteCountry(i, country)">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

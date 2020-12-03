@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return true;
+    return this.checkToken();
   }
 
   private checkToken(): Promise<any> {
