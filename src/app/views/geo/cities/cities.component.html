@@ -1,0 +1,42 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Cities of country {{country.name}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="box">
+      <div class="box-tools">
+
+        <div class="col-sm-3"><a class="btn btn-success" routerLink="./create">Create city</a>
+        </div>
+
+        <div class="box-body table-responsive no-padding">
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th *ngFor=" let headerItem of tableHeader" scope="col">{{headerItem}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let city of cities">
+              <td scope="col">{{city.uuid}}</td>
+              <td scope="col">{{city.name}}</td>
+              <td scope="col">{{city.description}}</td>
+              <td scope="col">
+                <a class="btn btn-primary" [routerLink]="['/city', city.uuid]">View</a>
+                <a class="btn btn-warning" [routerLink]="['./update', city.uuid]">Update</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

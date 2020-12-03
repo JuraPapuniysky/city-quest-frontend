@@ -13,6 +13,10 @@ import {CountriesComponent} from './views/geo/countries/countries.component';
 import {CountryCreateComponent} from './views/geo/countries/country-create/country-create.component';
 import {CountriesMainComponent} from './pages/countries-main/countries-main.component';
 import {CountryUpdateComponent} from './views/geo/countries/country-update/country-update.component';
+import {CitiesMainComponent} from './pages/cities-main/cities-main.component';
+import {CitiesComponent} from './views/geo/cities/cities.component';
+import {CityCreateComponent} from './views/geo/cities/city-create/city-create.component';
+import {CityUpdateComponent} from './views/geo/cities/city-update/city-update.component';
 
 const routes: Routes = [
   {
@@ -30,6 +34,16 @@ const routes: Routes = [
           {path: '', component: CountriesComponent},
           {path: 'create', component: CountryCreateComponent},
           {path: 'update/:uuid', component: CountryUpdateComponent},
+        ],
+      },
+      {
+        path: 'cities',
+        component: CitiesMainComponent,
+        canActivate: [AuthGuard],
+        children: [
+          {path: ':countryUuid', component: CitiesComponent},
+          {path: ':countryUuid/create', component: CityCreateComponent},
+          {path: ':countryUuid/update/:uuid', component: CityUpdateComponent},
         ],
       },
       {

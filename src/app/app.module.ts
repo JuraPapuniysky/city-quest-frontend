@@ -34,6 +34,10 @@ import { CountryUpdateComponent } from './views/geo/countries/country-update/cou
 import { CountryFormComponent } from './views/geo/countries/country-form/country-form.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import { CountriesMainComponent } from './pages/countries-main/countries-main.component';
+import { CityCreateComponent } from './views/geo/cities/city-create/city-create.component';
+import { CityUpdateComponent } from './views/geo/cities/city-update/city-update.component';
+import { CityFormComponent } from './views/geo/cities/city-form/city-form.component';
+import { CitiesMainComponent } from './pages/cities-main/cities-main.component';
 
 
 registerLocaleData(localeEn, 'en-EN');
@@ -60,7 +64,11 @@ registerLocaleData(localeEn, 'en-EN');
     CountryCreateComponent,
     CountryUpdateComponent,
     CountryFormComponent,
-    CountriesMainComponent
+    CountriesMainComponent,
+    CityCreateComponent,
+    CityUpdateComponent,
+    CityFormComponent,
+    CitiesMainComponent
   ],
   imports: [
     BrowserModule,
