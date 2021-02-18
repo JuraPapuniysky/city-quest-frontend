@@ -38,6 +38,12 @@ import { CityCreateComponent } from './views/geo/cities/city-create/city-create.
 import { CityUpdateComponent } from './views/geo/cities/city-update/city-update.component';
 import { CityFormComponent } from './views/geo/cities/city-form/city-form.component';
 import { CitiesMainComponent } from './pages/cities-main/cities-main.component';
+import { QuestsComponent } from './views/quest/quests/quests.component';
+import { QuestCreateComponent } from './views/quest/quests/quest-create/quest-create.component';
+import { QuestUpdateComponent } from './views/quest/quests/quest-update/quest-update.component';
+import { QuestFormComponent } from './views/quest/quests/quest-form/quest-form.component';
+import { QuestMainComponent } from './pages/quest/quest-main/quest-main.component';
+import { QuestionFormComponent } from './views/quest/quests/questions/question-form/question-form.component';
 
 
 registerLocaleData(localeEn, 'en-EN');
@@ -68,7 +74,13 @@ registerLocaleData(localeEn, 'en-EN');
     CityCreateComponent,
     CityUpdateComponent,
     CityFormComponent,
-    CitiesMainComponent
+    CitiesMainComponent,
+    QuestsComponent,
+    QuestCreateComponent,
+    QuestUpdateComponent,
+    QuestFormComponent,
+    QuestMainComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,

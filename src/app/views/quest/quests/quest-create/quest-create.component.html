@@ -1,0 +1,28 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Quest creation</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="box">
+          <app-quest-form [quest]="questEntity"></app-quest-form>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div *ngFor="let questionEntity of questionEntities" class="box">
+          <app-question-form [questionEntity]="questionEntity"></app-question-form>
+        </div>
+        <div class="box">
+          <button class="btn btn-primary" (click)="addQuestion()">Add question</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

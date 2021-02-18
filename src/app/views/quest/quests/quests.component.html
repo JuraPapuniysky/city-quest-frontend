@@ -1,0 +1,38 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Quests</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <div class="box">
+      <div class="box-tools">
+        <a [routerLink]="['./create']" class="btn btn-success">Create quest</a>
+      </div>
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th *ngFor=" let headerItem of tableHeader" scope="col">{{headerItem}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let questEntity of quests; let i = index">
+            <td scope="col">{{questEntity.uuid}}</td>
+            <td scope="col">{{questEntity.name}}</td>
+            <td scope="col">{{questEntity.countryUuid}}</td>
+            <td scope="col">{{questEntity.cityUuid}}</td>
+            <td scope="col">{{questEntity.description}}</td>
+              <a class="btn btn-warning" [routerLink]="['./update', questEntity.uuid]">Update</a>
+              <button class="btn btn-danger" (click)="deleteQuest(i, questEntity)">Delete</button>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
