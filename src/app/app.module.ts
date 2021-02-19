@@ -44,6 +44,7 @@ import { QuestUpdateComponent } from './views/quest/quests/quest-update/quest-up
 import { QuestFormComponent } from './views/quest/quests/quest-form/quest-form.component';
 import { QuestMainComponent } from './pages/quest/quest-main/quest-main.component';
 import { QuestionFormComponent } from './views/quest/quests/questions/question-form/question-form.component';
+import {AutocompleteLibModule} from "angular-ng-autocomplete";
 
 
 registerLocaleData(localeEn, 'en-EN');
@@ -82,21 +83,22 @@ registerLocaleData(localeEn, 'en-EN');
     QuestMainComponent,
     QuestionFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 10000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
-    NgbModule,
-    HttpClientModule,
-    CKEditorModule,
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot({
+            timeOut: 10000,
+            positionClass: 'toast-bottom-right',
+            preventDuplicates: true,
+        }),
+        NgbModule,
+        HttpClientModule,
+        CKEditorModule,
+        FormsModule,
+        AutocompleteLibModule,
+    ],
   providers: [
      {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true},
      {provide: HTTP_INTERCEPTORS, useClass: AuthHeadersInterceptor, multi: true}

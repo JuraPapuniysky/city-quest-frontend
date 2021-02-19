@@ -76,6 +76,17 @@ export class CountryService {
     });
   }
 
+  async searchCountries(prefix: string) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(`${this.apiUrl}/countries/search/${prefix}`).toPromise()
+        .then((data: CountriesResponseEntity) => {
+          this.countriesResponse = data;
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
   public deleteCountry(country: CountryEntity) {
     return this.httpClient.delete(`${this.apiUrl}/country/${country.uuid}`);
   }

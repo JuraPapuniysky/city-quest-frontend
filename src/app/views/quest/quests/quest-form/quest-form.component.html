@@ -7,10 +7,17 @@
           <input [(ngModel)]="quest.name" id="countryName" class="form-control" name="name">
         </div>
         <div class="form-group">
-          <label for="countryUuid">Country</label>
-          <select [(ngModel)]="quest.countryUuid" id="countryUuid" class="form-control" name="countryUuid">
+          <label>Country</label>
+          <ng-autocomplete
+            [data]="countryEntities"
+            [searchKeyword]="keyword"
+            (selected)='selectCountryEvent($event)'
+            (inputChanged)='onChangeSearchCountry($event)'
+            (inputFocused)='onFocusedCountry($event)'
+            [itemTemplate]="autoCompleteItems"
+            [notFoundTemplate]="notFoundTemplate"
+          ></ng-autocomplete>
 
-          </select>
         </div>
         <div class="form-group">
           <label for="cityUuid">City</label>
@@ -34,3 +41,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #autoCompleteItems let-item>
+  <a [innerHTML]="item.name"></a>
+</ng-template>
+
+<ng-template #notFoundTemplate let-notFound>
+  <div [innerHTML]="notFound"></div>
+</ng-template>
