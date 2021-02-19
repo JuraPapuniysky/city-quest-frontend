@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {QuestEntity} from '../entities/quest.entity';
+import {QuestionEntity} from '../entities/question-entity';
 
 @Component({
   selector: 'app-quest-form',
@@ -20,7 +21,21 @@ export class QuestFormComponent implements OnInit {
   }
 
   onSubmit(quest: QuestEntity) {
-    console.log(quest);
+    this.updateCountryEvent.emit(this.quest);
+  }
+
+  addQuestion(): void {
+    this.quest.questionEntities.push(new QuestionEntity());
+  }
+
+  saveQuestion(questionEntity: QuestionEntity, index: number): void {
+    this.quest.questionEntities[index] = questionEntity;
+  }
+
+  deleteQuestion(index: number): void {
+    if (index > -1) {
+      this.quest.questionEntities.splice(index, 1);
+    }
   }
 
 }

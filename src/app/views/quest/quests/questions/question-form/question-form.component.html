@@ -1,19 +1,19 @@
-<form (ngSubmit)="onSubmit(questionEntity)">
+<form>
   <div class="form-group">
     <label for="questionDescription">Description</label>
-    <input [(ngModel)]="questionEntity.description" id="questionDescription" class="form-control" name="questionDescription">
+    <input [(ngModel)]="questionEntity.description" id="questionDescription" class="form-control" name="questionDescription" (change)="onChange()">
   </div>
   <div class="form-group">
     <label for="questionType">Type</label>
-    <select [(ngModel)]="questionEntity.type" id="questionType" class="form-control" name="questionType">
+    <select [(ngModel)]="questionEntity.type" id="questionType" class="form-control" name="questionType" (change)="onChange()">
 
     </select>
   </div>
   <div class="form-group">
     <label for="questionAnswer">Answer</label>
-    <input [(ngModel)]="questionEntity.answer" id="questionAnswer" class="form-control" name="questionAnswer">
-  </div>
-  <div class="box">
-    <button type="submit" class="btn btn-danger">Delete</button>
+    <input [(ngModel)]="questionEntity.answer" id="questionAnswer" class="form-control" name="questionAnswer" (change)="onChange()">
   </div>
 </form>
+<div class="box">
+  <button type="submit" class="btn btn-danger" (click)="onDelete()">Delete</button>
+</div>

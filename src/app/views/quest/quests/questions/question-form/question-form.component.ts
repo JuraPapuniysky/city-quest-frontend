@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {QuestionEntity} from '../../entities/question-entity';
 
 @Component({
@@ -9,6 +9,10 @@ import {QuestionEntity} from '../../entities/question-entity';
 export class QuestionFormComponent implements OnInit {
 
   @Input() questionEntity: QuestionEntity;
+  @Input() index: number;
+
+  @Output() questionEvent: EventEmitter<QuestionEntity> = new EventEmitter<QuestionEntity>();
+  @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
   }
@@ -16,8 +20,11 @@ export class QuestionFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(questionEntity: QuestionEntity): void {
-
+  onChange(): void {
+    this.questionEvent.emit(this.questionEntity);
   }
 
+  onDelete(): void {
+    this.deleteEvent.emit(this.index);
+  }
 }

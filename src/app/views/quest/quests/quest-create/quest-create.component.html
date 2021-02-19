@@ -9,20 +9,6 @@
 </div>
 <section class="content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="box">
-          <app-quest-form [quest]="questEntity"></app-quest-form>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div *ngFor="let questionEntity of questionEntities" class="box">
-          <app-question-form [questionEntity]="questionEntity"></app-question-form>
-        </div>
-        <div class="box">
-          <button class="btn btn-primary" (click)="addQuestion()">Add question</button>
-        </div>
-      </div>
-    </div>
+    <app-quest-form [quest]="questEntity" (updateCountryEvent)="saveQuest($event)"></app-quest-form>
   </div>
 </section>

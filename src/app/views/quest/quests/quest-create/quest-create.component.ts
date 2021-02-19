@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {QuestEntity} from '../entities/quest.entity';
-import {QuestionEntity} from '../entities/question-entity';
+import {QuestService} from '../services/quest.service';
 
 @Component({
   selector: 'app-quest-create',
@@ -10,14 +10,16 @@ import {QuestionEntity} from '../entities/question-entity';
 export class QuestCreateComponent implements OnInit {
 
   public questEntity: QuestEntity = new QuestEntity();
-  public questionEntities: Array<QuestionEntity> = [];
 
-  constructor() { }
+  constructor(private questService: QuestService) { }
 
   ngOnInit(): void {
   }
 
-  addQuestion(): void {
-    this.questionEntities.push(new QuestionEntity());
+  saveQuest(questEntity: QuestEntity): void {
+    console.log(questEntity);
+    this.questService.createQuest(questEntity).subscribe(data => {
+      console.log(data);
+    });
   }
 }

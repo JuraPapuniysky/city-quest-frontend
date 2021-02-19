@@ -18,7 +18,7 @@ export class QuestService {
 
   async getQuests() {
     return new Promise((resolve, reject) => {
-      this.httpClient.get(`${this.apiUrl}/api/v1/quests`).toPromise()
+      this.httpClient.get(`${this.apiUrl}/quests`).toPromise()
         .then((data: QuestsResponseEntity) => {
           this.questsResponseEntity = data;
           resolve(data);
@@ -30,7 +30,7 @@ export class QuestService {
 
   async getQuest(uuid: string) {
     return new Promise((resolve, reject) => {
-      this.httpClient.get(`${this.apiUrl}/api/v1/quest/${uuid}`).toPromise()
+      this.httpClient.get(`${this.apiUrl}/quest/${uuid}`).toPromise()
         .then((data: QuestResponseEntity) => {
             this.questResponseEntity = data;
             resolve(data);
@@ -41,11 +41,11 @@ export class QuestService {
   }
 
   createQuest(questEntity: QuestEntity) {
-    return this.httpClient.post(`${this.apiUrl}/api/v1/quest`, questEntity);
+    return this.httpClient.post(`${this.apiUrl}/quest`, questEntity);
   }
 
   deleteQuest(questEntity: QuestEntity){
-    return this.httpClient.delete(`${this.apiUrl}/api/v1/quest/${questEntity.uuid}`);
+    return this.httpClient.delete(`${this.apiUrl}/quest/${questEntity.uuid}`);
   }
 
   public getQuestEntities(): Array<QuestEntity> {
