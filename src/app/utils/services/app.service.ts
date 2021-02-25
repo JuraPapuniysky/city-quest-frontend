@@ -14,8 +14,8 @@ import {RefreshTokenEntity} from '../../entities/response/refresh-token-entity';
 export class AppService {
 
   public user = {
-    firstName: 'Alexander',
-    lastName: 'Pierce',
+    firstName: 'Papunitsky',
+    lastName: 'Yurii',
     image: 'assets/img/user2-160x160.jpg',
   };
 
@@ -80,9 +80,13 @@ export class AppService {
 
   refreshToken() {
     return new Promise((resolve, reject) => {
+      const token = localStorage.getItem('refresh-token');
+      if (!token) {
+        this.router.navigate(['/login']);
+      }
       this.http.post(`${this.apiUrl}/auth/refresh`, '', {
         headers: {
-          'Refresh-Token': localStorage.getItem('refresh-token')
+          'Refresh-Token': token
         }
       }).toPromise().then((data: RefreshTokenEntity) => {
         localStorage.setItem('access-token', data.accessToken);
@@ -95,9 +99,13 @@ export class AppService {
   }
 
   refreshTokenWithOutPromise() {
+    const token = localStorage.getItem('refresh-token');
+    if (!token) {
+      this.router.navigate(['/login']);
+    }
     return this.http.post(`${this.apiUrl}/auth/refresh`, '', {
       headers: {
-        'Refresh-Token': localStorage.getItem('refresh-token')
+        'Refresh-Token': token
       }
     }).subscribe((data: RefreshTokenEntity) => {
       localStorage.setItem('access-token', data.accessToken);

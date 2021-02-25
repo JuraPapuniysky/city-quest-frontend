@@ -6,7 +6,7 @@
   <div class="form-group">
     <label for="questionType">Type</label>
     <select [(ngModel)]="questionEntity.type" id="questionType" class="form-control" name="questionType" (change)="onChange()">
-
+      <option *ngFor="let questionType of questionTypes" value="{{questionType.value}}">{{questionType.description}}</option>
     </select>
   </div>
   <div class="form-group">

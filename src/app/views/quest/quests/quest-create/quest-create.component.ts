@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestEntity} from '../entities/quest.entity';
 import {QuestService} from '../services/quest.service';
+import {QuestionTypeEntity} from '../entities/question-type.entity';
 
 @Component({
   selector: 'app-quest-create',
@@ -10,10 +11,15 @@ import {QuestService} from '../services/quest.service';
 export class QuestCreateComponent implements OnInit {
 
   public questEntity: QuestEntity = new QuestEntity();
+  public questionTypes: Array<QuestionTypeEntity>;
 
-  constructor(private questService: QuestService) { }
+  constructor(private questService: QuestService) {
 
-  ngOnInit(): void {
+  }
+
+  async ngOnInit() {
+    await this.questService.getQuestionTypes();
+    this.questionTypes = this.questService.getQuestionTypeResponseEntity().questionTypes;
   }
 
   saveQuest(questEntity: QuestEntity): void {

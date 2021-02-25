@@ -9,6 +9,6 @@
 </div>
 <section class="content">
   <div class="container-fluid">
-    <app-quest-form [quest]="questEntity" (updateCountryEvent)="saveQuest($event)"></app-quest-form>
+    <app-quest-form [quest]="questEntity" [questionTypes]="questionTypes" (updateCountryEvent)="saveQuest($event)"></app-quest-form>
   </div>
 </section>

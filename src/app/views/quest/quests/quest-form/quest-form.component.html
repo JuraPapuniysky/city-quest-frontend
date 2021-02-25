@@ -20,8 +20,16 @@
 
         </div>
         <div class="form-group">
-          <label for="cityUuid">City</label>
-          <input [(ngModel)]="quest.countryUuid" id="cityUuid" class="form-control" name="cityUuid">
+          <label>City</label>
+          <ng-autocomplete
+            [data]="cityEntities"
+            [searchKeyword]="keyword"
+            (selected)='selectCityEvent($event)'
+            (inputChanged)='onChangeSearchCity($event)'
+            (inputFocused)='onFocusedCity($event)'
+            [itemTemplate]="autoCompleteItems"
+            [notFoundTemplate]="notFoundTemplate"
+          ></ng-autocomplete>
         </div>
         <div class="form-group">
           <label for="description">Description</label>
@@ -34,7 +42,7 @@
   </div>
   <div class="col-sm-6">
     <div *ngFor="let questionEntity of quest.questionEntities; let i = index" class="box">
-      <app-question-form [questionEntity]="questionEntity" [index]="i" (questionEvent)="saveQuestion($event, i)" (deleteEvent)="deleteQuestion($event)"></app-question-form>
+      <app-question-form [questionEntity]="questionEntity" [index]="i" [questionTypes]="questionTypes" (questionEvent)="saveQuestion($event, i)" (deleteEvent)="deleteQuestion($event)"></app-question-form>
     </div>
     <div class="box">
       <button class="btn btn-primary" (click)="addQuestion()">Add question</button>

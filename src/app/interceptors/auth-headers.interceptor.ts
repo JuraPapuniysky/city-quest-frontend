@@ -14,12 +14,15 @@ export class AuthHeadersInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let req = request.clone({
-      setHeaders: {
-        Authorization: localStorage.getItem('access-token')
-      }
-    });
+    const token = localStorage.getItem('access-token');
+    if (token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: token,
+        }
+      });
+    }
 
-    return next.handle(req);
+    return next.handle(request);
   }
 }

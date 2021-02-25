@@ -71,6 +71,18 @@ export class CityService {
     });
   }
 
+  async searchCities(countryUuid: string, prefix: string) {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(`${this.apiUrl}/cities/search/${countryUuid}/${prefix}`).toPromise()
+        .then((data: CitiesResponseEntity) => {
+          this.citiesResponse = data;
+          resolve();
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
   public getCityResponse(): CityResponseEntity {
     return this.cityResponse;
   }

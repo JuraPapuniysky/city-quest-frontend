@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {QuestionEntity} from '../../entities/question-entity';
+import {QuestionTypeEntity} from '../../entities/question-type.entity';
 
 @Component({
   selector: 'app-question-form',
@@ -10,6 +11,7 @@ export class QuestionFormComponent implements OnInit {
 
   @Input() questionEntity: QuestionEntity;
   @Input() index: number;
+  @Input() questionTypes: Array<QuestionTypeEntity>;
 
   @Output() questionEvent: EventEmitter<QuestionEntity> = new EventEmitter<QuestionEntity>();
   @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>();
